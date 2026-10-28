@@ -53,29 +53,24 @@ def test_hottest_measurement_with_unique_maximum():
 
 
 def test_line_type():
-    line="Köln;14:21;21.7"
-    assert isinstance(line, str)
+    line = parse_measurement("Köln;14:21;21.7")
+    assert isinstance(line, (tuple, list))
+
 
 def test_line_measurement():
-    line=" Düsseldforf;14:21;21.7            "
-    l=line.strip().split(";")
-    assert len(l)==3
-    assert isinstance(l[0], str)
-    assert isinstance(l[1], float)
-    assert isinstance(l[2], float)
+    line = parse_measurement("Köln;14:21;21.7")
+    assert len(line) == 3
+    assert isinstance(line[0], str)
+    assert isinstance(line[2], float)
+    assert line[2] == 21.7
+
 
 def test_line_city():
-    line="Köln;14:21;21.7            "
-    l=line.strip().split(";")
-    assert l[0]!=""
+    line = parse_measurement("Köln;14:21;21.7")
+    assert line[0] == "Köln"
 
 
 def test_line_time():
-    line="sfax;22:22;20"
-    l=line.strip().split(";")
-    assert l[1]!= None
-    assert l[1].count(":")==1
-    assert l[1].split(":")[0] in range(0,23)
-    assert l[1].split(":")[1] in range(0,59)
-
-
+    line = parse_measurement("Köln;14:21;21.7")
+    assert line[1] is not None
+    assert str(line[1]) == "861"
