@@ -65,13 +65,13 @@ def test_line_measurement():
     assert isinstance(l[2], float)
 
 def test_line_city():
-    line="  ;14:21;21.7            "
+    line="Köln;14:21;21.7            "
     l=line.strip().split(";")
     assert l[0]!=""
 
 
 def test_line_time():
-    line="sfax;25:655;6520"
+    line="sfax;22:22;20"
     l=line.strip().split(";")
     assert l[1]!= None
     assert l[1].count(":")==1
