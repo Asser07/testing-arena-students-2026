@@ -211,24 +211,6 @@ def test_hottest_measurement_with_same_maximum():
         ]
     assert hottest_measurement(measurements)==("Berlin", 750, 25.0)
 
-<<<<<<< HEAD
-def test_line_type():
-    line = parse_measurement("Köln;14:21;21.7")
-    assert isinstance(line, (tuple, list))
-
-
-def test_line_measurement():
-    line = parse_measurement("Köln;14:21;21.7")
-    assert len(line) == 3
-    assert isinstance(line[0], str)
-    assert isinstance(line[2], float)
-    assert line[2] == 21.7
-
-
-def test_line_city():
-    line = parse_measurement("Köln;14:21;21.7")
-    assert line[0] == "Köln"
-=======
 def test_hottest_measurement_with_same_values():
     measurements = [
                 ("Köln", 600, 10.0),
@@ -263,17 +245,9 @@ def test_hottest_no_modification():
         ("Bonn", 700, 25.0),
         ("Berlin", 800, 20.0)
     ]
->>>>>>> Asser07
 
     original = measurements.copy()
 
-<<<<<<< HEAD
-def test_line_time():
-    line = parse_measurement("Köln;14:21;21.7")
-    assert line[1] is not None
-    assert str(line[1]) == "861"
-=======
     hottest_measurement(measurements)
 
     assert measurements == original
->>>>>>> Asser07
